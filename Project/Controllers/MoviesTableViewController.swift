@@ -18,6 +18,8 @@ class MoviesTableViewController: UITableViewController {
         
         if let moviebook = read() {
             book = moviebook
+        } else {
+            book = MovieBook()
         }
         
         if #available(iOS 11.0, *) {
@@ -49,7 +51,7 @@ class MoviesTableViewController: UITableViewController {
 
     // Tableau
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  book!.listMovies().count
+        return  book?.listMovies().count ?? 0
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else { fatalError("Wrong type") }
