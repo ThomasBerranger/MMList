@@ -15,12 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    
     let username:String = "Thomas"
     let password:String = "123"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +58,7 @@ class ViewController: UIViewController {
         passwordField.text = nil
         self .performSegue(withIdentifier: "loginSegue", sender: nil)
     }
+    
     
 
 }

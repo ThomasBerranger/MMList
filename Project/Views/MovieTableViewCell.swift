@@ -34,6 +34,12 @@ class MovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         synopsisLabel.text = movie.synopsis
         dateLabel.text = dateFormatter.string(from: movie.date)
+        
+        let url = URL(string: "https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/flip.jpg")
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        pictureView.image = UIImage(data: data!)
+        
     }
 
 }
+

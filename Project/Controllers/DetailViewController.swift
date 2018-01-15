@@ -40,8 +40,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var noteSlider: UISlider!
     @IBOutlet weak var watchedSwitch: UISwitch!
     @IBOutlet weak var watchedLabel: UILabel!
-    
-    
     @IBOutlet weak var imageView: UIImageView!
     
     
@@ -81,6 +79,11 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         {
             synopsisTextView.text = movie.synopsis
         }
+        
+        let url = URL(string: "https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/flip.jpg")
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        imageView.image = UIImage(data: data!)
+        
     }
     
     
@@ -138,6 +141,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             self.present(imagePicker, animated: true, completion: nil)
         }
+        
     }
     
     
@@ -149,6 +153,9 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let url = info[UIImagePickerControllerImageURL] as! URL
+        
+        print(url)
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         print("IMAGE !!!")
